@@ -20,8 +20,9 @@ Storage.prototype.delete = function(id) {
     for(var i=0;i<this.items.length;i++){
         if(this.items[i].id == id){
             item = this.items[i];
-            console.log(this.items[i]);
+            
             this.items.splice(i,1);
+            console.log(this.items);
         }
     }
     return item;
@@ -83,6 +84,17 @@ app.put('/items/:id', jsonParser, function(req, res){
     
 });
 
+app.get('/users', function(req, res){
+    // if (!req.body){
+    //     return res.sendStatus(400);
+    // }
+    
+    // var item = storage.update(req.body.id, req.body.name);
+    res.status(201);
+    
+});
 
+exports.app = app;
+exports.storage = storage;
 
 app.listen(process.env.PORT || 8080);
